@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+// import { configureStore } from "@reduxjs/toolkit";
+// import { Provider } from "react-redux";
+import Header from './components/header';
+import Home from './components/home';
+import Login from './components/login';
+import Item from './components/item';
+
+import Search from './components/search';
 function App() {
+
+  // const myStore = configureStore({
+  //   reducer: {
+  //     counterSlice,
+
+  //   }
+  // })
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      {/* <Provider store={myStore}> */}
+
+        <Routes>
+          <Route path="/home/*" element={<Header />} />
+          <Route path="/login/*" element={<Header />} />
+          <Route path="/home" element={<Search />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/item" element={<Item />} />
+        </Routes>
+      {/* </Provider> */}
+
+    </BrowserRouter>
   );
 }
 
