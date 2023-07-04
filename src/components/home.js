@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState , useEffect ,useContext} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { AuthContext } from '../services/context';
@@ -11,9 +11,11 @@ import Login from './login.js';
 export default function Home() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const nav = useNavigate();
- 
+
+  const [name1, setName1] = useState(localStorage.getItem('name'));
+
   // const { userData, setUserData } = useState(" ");
-  
+
 
   const [name, setName] = useState("user");
   const [role, setRole] = useState("user");
@@ -68,27 +70,25 @@ export default function Home() {
 
   return (
     <div className="container ">
-      <div className="row ">
 
-        <h1 className=" col-auto">hello {name} </h1>
+      <h1 className="text-light">hello {name} </h1>
 
-        {isAdmin && <div className=" col-auto">
-          <Link className='text-decoration-none' to="/admin"><p className='text-light'>admin page</p></Link>
-        </div>}
-      </div>
-      <Search /> 
-      {!isLoggedIn  ? (
-         <Link to="/login">
-         <button className="btn btn-light" >login</button>
-       </Link>
-      
-      ):
-      (
-        
-        <button className="btn btn-light" onClick={onLogOut}>log Out</button>
+      {isAdmin && <div >
+        <Link className='text-decoration-none' to="/admin"><p className='text-light'>admin page</p></Link>
+      </div>}
+      {!isLoggedIn ? (
+        <Link to="/login">
+          <button className="btn btn-light" >login</button>
+        </Link>
 
-      )}
-      
+      ) :
+        (
+
+          <button className="btn btn-light" onClick={onLogOut}>log Out</button>
+
+        )}
+
+      <Search />
     </div>
   );
 }
