@@ -10,7 +10,7 @@ import Search from './search';
 import Login from './login.js';
 
 
-export default function Item() {
+export default function Oreders() {
 
   const [name, setName] = useState("item");
   const [image, setImage] = useState("img");
@@ -39,10 +39,8 @@ export default function Item() {
 
   return (
     <div className='container'>
-      <h1 className='text-center text-light'>{name}</h1>
-      <div>
-        <img src={"../images/" + image} width={100} alt={image}></img>
-      </div>
+      <h1 className='text-center text-light'>Please select a branch near you</h1>
+      <select></select>
     </div>
   )
 }
